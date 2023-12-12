@@ -1,0 +1,620 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Gestión de Usuarios",
+    "description": "API para la gestión de usuarios y roles.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "Operaciones sobre usuarios"
+    },
+    {
+      "name": "auth",
+      "description": "Operaciones de autenticación"
+    },
+    {
+      "name": "rol",
+      "description": "Operaciones sobre roles"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Crea un nuevo usuario",
+        "operationId": "createUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "password",
+                  "email",
+                  "full_name",
+                  "rol_id"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "nuevo_usuario"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "contraseña_segura"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "usuario@example.com"
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "example": "Nombre Apellido"
+                  },
+                  "rol_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuario creado exitosamente"
+          },
+          "400": {
+            "description": "El nombre de usuario ya existe"
+          }
+        }
+      }
+    },
+    "/user/{user_id}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Obtiene detalles de un usuario",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalles del usuario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Actualiza un usuario",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "password",
+                  "email",
+                  "full_name",
+                  "rol_id"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "usuario_actualizado"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "nueva_contraseña"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "usuario_actualizado@example.com"
+                  },
+                  "full_name": {
+                    "type": "string",
+                    "example": "Nombre Actualizado Apellido"
+                  },
+                  "rol_id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado exitosamente"
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Elimina un usuario",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario eliminado exitosamente"
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Lista todos los usuarios",
+        "operationId": "listUsers",
+        "responses": {
+          "200": {
+            "description": "Lista de usuarios",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Iniciar sesión de usuario",
+        "operationId": "loginUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Nombre de usuario o contraseña incorrecta"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Cerrar sesión de usuario",
+        "operationId": "logoutUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Logout"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cierre de sesión exitoso"
+          },
+          "404": {
+            "description": "ID de sesión no encontrada o inexistente"
+          }
+        }
+      }
+    },
+    "/active_sessions": {
+      "get": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Lista todas las sesiones activas",
+        "operationId": "listActiveSessions",
+        "responses": {
+          "200": {
+            "description": "Lista de sesiones activas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ActiveSession"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error de autenticación"
+          }
+        }
+      }
+    },
+    "/rol": {
+      "post": {
+        "tags": [
+          "rol"
+        ],
+        "summary": "Crea un nuevo rol",
+        "operationId": "createRol",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rol_nombre": {
+                    "type": "string",
+                    "example": "Administrador"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Rol creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["rol_nombre"],
+                  "properties": {
+                    "rol_nombre": {
+                      "type": "string",
+                      "example": "Administrador"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Entrada inválida o rol ya existente"
+          }
+        }
+      }
+    },
+    "/rol/{rol_id}": {
+      "get": {
+        "tags": [
+          "rol"
+        ],
+        "summary": "Obtiene detalles de un rol",
+        "operationId": "getRolById",
+        "parameters": [
+          {
+            "name": "rol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalles del rol",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rol"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rol no encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "rol"
+        ],
+        "summary": "Actualiza un rol",
+        "operationId": "updateRol",
+        "parameters": [
+          {
+            "name": "rol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rol"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rol actualizado exitosamente"
+          },
+          "404": {
+            "description": "Rol no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "rol"
+        ],
+        "summary": "Elimina un rol",
+        "operationId": "deleteRol",
+        "parameters": [
+          {
+            "name": "rol_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rol eliminado exitosamente"
+          },
+          "404": {
+            "description": "Rol no encontrado"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "tags": [
+          "rol"
+        ],
+        "summary": "Lista todos los roles",
+        "operationId": "listRoles",
+        "responses": {
+          "200": {
+            "description": "Lista de roles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Rol"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": [
+          "username",
+          "password",
+          "email",
+          "full_name",
+          "rol_id"
+        ],
+        "properties": {
+          "user_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "example": "nuevo_usuario"
+          },
+          "password": {
+            "type": "string",
+            "example": "contraseña_segura"
+          },
+          "email": {
+            "type": "string",
+            "example": "usuario@example.com"
+          },
+          "full_name": {
+            "type": "string",
+            "example": "Nombre Apellido"
+          },
+          "rol_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-01-01T12:00:00Z"
+          }
+        }
+      },
+      "Login": {
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "user123"
+          },
+          "password": {
+            "type": "string",
+            "example": "pass123"
+          }
+        }
+      },
+      "Logout": {
+        "type": "object",
+        "required": [
+          "session_id"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "example": "sessionid123"
+          }
+        }
+      },
+      "Session": {
+        "type": "object",
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "example": "sessionid123"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "example": "user123"
+          }
+        }
+      },
+      "ActiveSession": {
+        "type": "object",
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "example": "sessionid123"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "example": "user123"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-01-01T12:00:00Z"
+          }
+        }
+      },
+      "Rol": {
+        "type": "object",
+        "properties": {
+          "rol_nombre": {
+            "type": "string",
+            "example": "Administrador"
+          }
+        },
+        "required": ["rol_nombre"]
+      }
+    }
+  }
+}

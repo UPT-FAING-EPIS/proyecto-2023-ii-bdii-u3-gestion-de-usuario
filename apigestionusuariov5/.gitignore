@@ -1,0 +1,38 @@
+# Directorios de entorno virtual
+venv/
+env/
+
+# Archivos de configuración de IDE
+.vscode/
+
+# Carpeta de credenciales de AWS
+.aws/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Carpetas de paquetes de Python
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de base de datos SQLite
+*.sqlite
+
+# Archivos de configuración de Docker
+docker-compose.override.yml

@@ -1,0 +1,76 @@
+# version: '3.8'
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       - AWS_ACCESS_KEY_ID=AKIA4AMTLYOKPHSMUZWC
+#       - AWS_SECRET_ACCESS_KEY=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
+#       - AWS_DEFAULT_REGION=us-east-2
+#   redis:
+#     image: "redis:alpine"
+
+version: '3.8'
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+      - db
+    env_file:
+      - ./.env
+    environment:
+      - FLASK_APP=app/routes.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - AWS_ACCESS_KEY_ID=AKIA4AMTLYOKPHSMUZWC
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_DEFAULT_REGION=us-east-2
+
+  redis:
+    image: "redis:alpine"
+    command: ["redis-server", "--requirepass", "yoel4591"]
+
+  db:
+    image: "mysql:5.7"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: upt.2023
+      MYSQL_DATABASE: usuarios
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: upt.2023
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - web
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+volumes:
+  mysql-data:
+
+# para restablecer clave por defecto admin - admin user y pass
+# services:
+#   grafana:
+#     image: grafana/grafana
+#     environment:
+#       - GF_SECURITY_ADMIN_PASSWORD=unapasswordsegura
+#       - GF_SECURITY_ADMIN_USER=admin

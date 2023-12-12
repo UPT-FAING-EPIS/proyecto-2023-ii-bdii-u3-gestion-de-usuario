@@ -1,0 +1,5 @@
+scrape_configs:
+  - job_name: 'flask_application'
+    scrape_interval: 5s  # Intervalo de tiempo entre raspados
+    static_configs:
+      - targets: ['web:5000']
