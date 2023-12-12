@@ -40,15 +40,15 @@ class RabbitMQClient:
         except pika.exceptions.AMQPConnectionError as e:
             print("Connection to RabbitMQ lost. Trying to reconnect...")
             self.connect()
-            self.publish_event(event_type, event_details)  # Retry
+            self.publish_event(event_type, event_details)  
         except pika.exceptions.ChannelClosedByBroker as e:
             print("Channel closed by broker, trying to reopen...")
             self.connect()
-            self.publish_event(event_type, event_details)  # Retry
+            self.publish_event(event_type, event_details)  
         except pika.exceptions.StreamLostError as e:
             print("Stream lost, trying to reconnect...")
             self.connect()
-            self.publish_event(event_type, event_details)  # Retry
+            self.publish_event(event_type, event_details)  
         except Exception as e:
             print(f"Unhandled exception: {e}")
             raise

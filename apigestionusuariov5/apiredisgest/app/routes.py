@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify, session
-# from app import routes, models
 from dotenv import load_dotenv
-# import boto3
 import os
 from flask_migrate import Migrate
 
@@ -15,10 +13,7 @@ from app.models import db, Usuario, Rol, SessionManager, redis_instance
 
 from app import utils
 from app.getsecret import get_secret
-# from getsecret import get_secret
-# from rabbitmq_client import RabbitMQClient
 from app.rabbitmq_client import RabbitMQClient
-# from snsclient import create_sns_client, publish_to_sns
 from app.snsclient import create_sns_client, publish_to_sns
 from app.utils import hash_password
 from sqlalchemy.exc import IntegrityError
@@ -54,15 +49,13 @@ load_dotenv()
 migrate = Migrate(app, db)
 init_metrics(app)
 
-#swagger
-SWAGGER_URL = '/swagger'  # URL for Swagger UI (without trailing '/')
-API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
+SWAGGER_URL = '/swagger'  
+API_URL = '/static/swagger.json'  
 
-# Call factory function to create our blueprint
 swaggerui_blueprint = get_swaggerui_blueprint(
-    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    SWAGGER_URL,  
     API_URL,
-    config={  # Swagger UI config overrides
+    config={  
         'app_name': "ApiGestionUsuariosSwagger"
     },
 )
@@ -137,7 +130,7 @@ def list_users():
             "username": user.username,
             "email": user.email,
             "full_name": user.full_name,
-            "created_at": user.created_at.isoformat(),  # o str(user.created_at) si no quieres el formato ISO
+            "created_at": user.created_at.isoformat(),  
             "rol_id": user.rol_id
         } for user in users
     ]
@@ -201,7 +194,6 @@ def delete_user(user_id):
     else:
         return jsonify({"error": "Usuario no encontrado"}), 404
 
-# Nuevas rutas para gestionar roles
 @app.route('/rol', methods=['POST'])
 def add_rol():
     data = request.json
@@ -244,14 +236,15 @@ def list_roles():
     roles = Rol.query.all()
     return jsonify([{"rol_id": rol.rol_id, "rol_nombre": rol.rol_nombre} for rol in roles]), 200
 
-# Ruta para ver las sesiones activas
+
 @app.route('/active_sessions', methods=['GET'])
 def active_sessions():
     try:
-        keys = redis_db.keys()  # Obtener todas las claves de las sesiones
+        keys = redis_db.keys() 
         session_data = {}
         for key in keys:
-            session_data[key] = json.loads(redis_db.get(key))  # Deserializar cada sesión
+            # Deserializar cada sesión
+            session_data[key] = json.loads(redis_db.get(key))  
         return jsonify(session_data), 200
     except redis.exceptions.AuthenticationError:
         return jsonify({"error": "Autenticacion con redis erronea"}), 401

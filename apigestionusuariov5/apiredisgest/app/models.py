@@ -28,9 +28,9 @@ class Usuario(db.Model):
 redis_host = os.getenv('REDIS_HOST', 'redis')
 redis_port = int(os.getenv('REDIS_PORT', 6379))
 redis_db = int(os.getenv('REDIS_DB', 0))
-redis_password = os.getenv('REDIS_PASSWORD')  # Asegúrate de configurar esta variable de entorno
+redis_password = os.getenv('REDIS_PASSWORD')  
 
-# Crea una instancia de Redis para manejar las sesiones
+
 redis_instance = redis.Redis(host=redis_host, port=redis_port, db=redis_db, password=redis_password, decode_responses=True)
 
 class SessionManager:
@@ -46,14 +46,6 @@ class SessionManager:
         if session_data:
             return json.loads(session_data)
         return None
-
-    # @staticmethod
-    # def get_session(session_id):
-    #     # Obtener la sesión de Redis
-    #     data = redis_instance.get(session_id)
-    #     if data:
-    #         return json.loads(data)
-    #     return None
 
     @staticmethod
     def delete_session(session_id):
