@@ -2,7 +2,6 @@
 version: '3.8'
 
 services:
-
   web:
     build: .
     ports:
@@ -15,13 +14,14 @@ services:
     environment:
       - FLASK_APP=app/routes.py
       - FLASK_RUN_HOST=0.0.0.0
-      - AWS_ACCESS_KEY_ID=AKIA4AMTLYOKPHSMUZWC
-      - AWS_SECRET_ACCESS_KEY=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
-      - AWS_DEFAULT_REGION=us-east-2
+    networks:
+      - app-network
 
   redis:
     image: "redis:alpine"
     command: ["redis-server", "--requirepass", "yoel4591"]
+    networks:
+      - app-network
 
   db:
     image: "mysql:5.7"
@@ -32,9 +32,11 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: upt.2023
     ports:
-      - "3306:3306"
+      - "3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
   prometheus:
     image: prom/prometheus
@@ -44,6 +46,8 @@ services:
       - "9090:9090"
     depends_on:
       - web
+    networks:
+      - app-network
 
   grafana:
     image: grafana/grafana
@@ -51,6 +55,12 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mysql-data:
@@ -62,3 +72,4 @@ volumes:
 #     environment:
 #       - GF_SECURITY_ADMIN_PASSWORD=unapasswordsegura
 #       - GF_SECURITY_ADMIN_USER=admin
+
