@@ -29,8 +29,8 @@ jobs:
           username: "root"
           password: "reinort94824494"
           port: "22"
-          source: "./apigestionusuariov5/*"
-          target: "/home/apigestionusuariov5/"
+          source: "./home/*"
+          target: "/home"
 
       - name: SSH remote commands
         uses: appleboy/ssh-action@master
