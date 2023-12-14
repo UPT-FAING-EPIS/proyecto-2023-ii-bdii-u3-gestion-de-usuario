@@ -49,6 +49,14 @@ services:
     networks:
       - app-network
 
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - app-network
 
 networks:
   app-network:
