@@ -23,7 +23,7 @@ jobs:
           password: "reinort94824494"
           port: "22"
           script: |
-            rm -rf /home/apigestionusuariov5/
+            rm -rf /home/gestapi/
 
       - name: Copy new files to server
         uses: appleboy/scp-action@master
@@ -33,7 +33,7 @@ jobs:
           password: "reinort94824494"
           port: "22"
           source: "."
-          target: "/home/apigestionusuariov5/"
+          target: "/home/gestapi/"
 
       - name: SSH remote commands
         uses: appleboy/ssh-action@master
@@ -43,7 +43,7 @@ jobs:
           password: "reinort94824494"
           port: "22"
           script: |
-            cd /home/apigestionusuariov5/apiredisgest
+            cd /home/gestapi/apigestionusuariov5/apiredisgest
             docker-compose down
             docker-compose rm -f
             pip install -r requirements.txt
