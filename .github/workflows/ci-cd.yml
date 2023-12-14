@@ -45,6 +45,7 @@ jobs:
           script: |
             cd /home/gestapi/apigestionusuariov5/apiredisgest
             docker-compose down
-            docker-compose rm -f
+            docker rm -f $(docker ps -a -q) || true
             pip install -r requirements.txt
-            docker-compose up -d
+            docker-compose up --build -d
+
