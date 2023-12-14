@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: List files
+        run: ls -alh
+
       - name: SSH delete old directory
         uses: appleboy/ssh-action@master
         with:
@@ -29,6 +32,7 @@ jobs:
           username: "root"
           password: "reinort94824494"
           port: "22"
+          source: "."
           target: "/home/apigestionusuariov5/"
 
       - name: SSH remote commands
