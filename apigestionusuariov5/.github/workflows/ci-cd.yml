@@ -29,7 +29,7 @@ jobs:
           username: "root"
           password: "reinort94824494"
           port: "22"
-          source: "."
+          source: "./apigestionusuariov5/*"
           target: "/home/apigestionusuariov5/"
 
       - name: SSH remote commands
@@ -42,6 +42,6 @@ jobs:
           script: |
             cd /home/apigestionusuariov5/apiredisgest
             docker-compose down
-            docker rm -f $(docker ps -aq)
+            docker-compose rm -f
             pip install -r requirements.txt
             docker-compose up -d
