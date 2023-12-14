@@ -20,7 +20,7 @@ jobs:
         password: "reinort94824494"
         port: "22"
         script: |
-          rm -rf /home/apigestionusuariov5/apiredisgest/
+          rm -rf /home/apigestionusuariov5
 
     - name: Copy new files to server
       uses: appleboy/scp-action@master
@@ -30,7 +30,7 @@ jobs:
         password: "reinort94824494"
         port: "22"
         source: "."
-        target: "/home/apigestionusuariov5/apiredisgest"
+        target: "/home"
 
     - name: SSH remote commands
       uses: appleboy/ssh-action@master
