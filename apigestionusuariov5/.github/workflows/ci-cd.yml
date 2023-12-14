@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Copy files to server
+      uses: appleboy/scp-action@master
+      with:
+        host: "161.132.47.44"
+        username: "root"
+        password: "reinort94824494"
+        port: "22"
+        source: "apigestionusuariov5/apiredisgest/*"
+        target: "/home/apigestionusuariov5/apiredisgest"
+
+    - name: SSH remote commands
+      uses: appleboy/ssh-action@master
+      with:
+        host: "161.132.47.44"
+        username: "root"
+        password: "reinort94824494"
+        port: "22"
+        script: |
+          cd /home/apigestionusuariov5/apiredisgest
+          docker-compose down
+          pip install -r requirements.txt
+          docker-compose up -d
