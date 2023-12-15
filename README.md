@@ -95,9 +95,15 @@ La inclusión de Amazon KMS refuerza la seguridad en la gestión de claves. En c
 ## 9. Bibliografía
 
 https://codigofacilito.com/articulos/orm-explicacion 
+
 https://redis.io/docs/connect/clients/python/
+
 https://redis-py.readthedocs.io/en/stable/		
+
 https://github.com/features/actions
+
 https://dev.to/msnmongare/title-building-a-food-api-with-django-and-mysql-5b12
+
 https://docs.docker.com/engine/api/
+
 https://docs.aws.amazon.com/es_es/prescriptive-guidance/latest/patterns/run-an-asp-net-core-web-api-docker-container-on-an-amazon-ec2-linux-instance.html	
