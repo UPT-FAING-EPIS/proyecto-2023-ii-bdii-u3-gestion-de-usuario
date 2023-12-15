@@ -7,21 +7,21 @@ Este repositorio contiene el código fuente y la documentación del proyecto "De
 
 ## Resumen
 
-El proyecto se centra en la creación de un sistema de gestión de usuarios utilizando el framework Flask y un API desarrollado en Python. Este sistema permite a un administrador crear roles y permisos, así como gestionar la creación y actualización de usuarios. Los permisos desempeñan un papel crucial en la asignación de capacidades a los usuarios, proporcionando un control eficiente y seguro sobre los recursos y funcionalidades del sistema mediante el uso de la base de datos no relacional Redis.
+Este proyecto se propone desarrollar una API eficiente para la gestión de usuarios, haciendo uso de tecnologías contemporáneas como Redis y MySQL para almacenar datos no relacionales y relacionales, respectivamente. La implementación se lleva a cabo con Flask y Python, integrando Amazon Key Management Services (KMS) para asegurar una gestión segura de claves. La API permitirá a los administradores definir roles y permisos, simplificando la administración de cuentas de usuario y optimizando la eficiencia del sistema. Se aborda la falta de una solución integral para la gestión de usuarios, y se busca ofrecer una solución completa y moderna que garantice robustez y seguridad.
 
 ## Abstract
 
-This project presents the development of a user management system using the Flask framework and our API created in the Python language. An administrator can create roles and permissions to proceed to create users. Both the created user and the admin will be able to use the profile update feature and view the list of users. These permissions play a fundamental role in assigning the capabilities that users will be able to carry out in the system, providing efficient and secure control over the resources and functionality of the system.
+This project aims to develop an efficient API for user management, making use of contemporary technologies such as Redis and MySQL to store non-relational and relational data, respectively. The implementation is carried out with Flask and Python, integrating Amazon Key Management Services (KMS) to ensure secure key management. The API will allow administrators to define roles and permissions, simplifying user account management and optimizing system efficiency. The lack of a comprehensive solution for user management is addressed, and the aim is to offer a complete and modern solution that guarantees robustness and security.
 
 ## 1. Introducción
 
-El objetivo principal de este proyecto es desarrollar una API eficiente para la gestión de usuarios, aprovechando tecnologías contemporáneas como bases de datos no relacionales, específicamente Redis, y el servicio Amazon Key Management Services (KMS). La implementación se realiza mediante el framework Flask en conjunto con el lenguaje de programación Python.
-
-La API permitirá a los administradores definir roles y permisos, simplificando la administración de cuentas de usuario. La combinación de Redis para el almacenamiento de datos no relacionales y Amazon KMS para la gestión segura de claves contribuirá a la robustez y seguridad del sistema.
+Este proyecto tiene como objetivo principal desarrollar una API eficiente para la gestión de usuarios, utilizando tecnologías contemporáneas como bases de datos no relacionales, en este caso, Redis, y bases de datos relacionales, específicamente MySQL, junto con el servicio de gestión de claves Amazon Key Management Services (KMS). La implementación se lleva a cabo mediante el framework Flask en conjunto con el lenguaje de programación Python.
+En este contexto, la API permitirá a los administradores definir roles y permisos, simplificando la administración de cuentas de usuario. La combinación de Redis para el almacenamiento de datos no relacionales, MySQL para la gestión de datos relacionales y Amazon KMS para la gestión segura de claves contribuirá a la robustez y seguridad del sistema. Los principios de Flask facilitarán el desarrollo ágil y la creación de endpoints eficientes.
+Este proyecto busca ofrecer una solución completa y moderna para la gestión de usuarios a través de una API, aprovechando la sinergia entre Redis, MySQL, Amazon KMS, Flask y Python en el proceso.	
 
 ## 2. Título
 
-"Desarrollo de un Sistema de Gestión de Usuario en el dominio Configuración usando Base de Datos no relacional Redis en el lenguaje PYTHON"
+ "Desarrollo de un Sistema de Gestión de Usuario en el dominio Configuración"
 
 ## 3. Autores
 
@@ -34,66 +34,70 @@ La API permitirá a los administradores definir roles y permisos, simplificando 
 
 ### 4.1 Problema
 
-La falta de una solución integral puede llevar a la ineficiencia en la administración de cuentas de usuario y a la falta de control sobre los recursos y funcionalidades del sistema.
+El problema abordado en este proyecto es la falta de una solución integral puede llevar a la ineficiencia en la administración de cuentas de usuario y a la falta de control sobre los recursos y funcionalidades del sistema.
 
 ### 4.2 Justificación
 
-La justificación radica en la necesidad de contar con una API robusta y moderna para la gestión de usuarios combinando Flask, Python, Redis y Amazon KMS, ofreciendo una solución integral que aborda eficiencia en el manejo de datos y seguridad en la gestión de claves.
+Este proyecto surge de la necesidad de desarrollar una API robusta para la gestión de usuarios. Se utiliza el framework Flask con Python, combinando bases de datos no relacionales como Redis y bases de datos relacionales como MySQL. Además, se implementa Amazon Key Management Services (KMS) para asegurar una gestión segura de claves. La integración de estas tecnologías busca ofrecer una solución completa y moderna que optimice la eficiencia en el manejo de datos y garantice la seguridad en la gestión de claves, abordando así los requisitos esenciales del proyecto.
 
 ### 4.3 Alcance
 
-El proyecto se limita al desarrollo de una API para la gestión de usuarios utilizando Flask y Python, con gestión segura de claves mediante Amazon KMS.
+El alcance de este proyecto se extiende al desarrollo de una API integral para la gestión de usuarios mediante el uso de Flask y Python. Se incluirá la implementación segura de claves a través de Amazon KMS. El sistema final, respaldado por esta API, posibilitará a los usuarios, ya sean administradores o usuarios regulares, acceder a perfiles y visualizar listas de usuarios. Además, se contemplará la capacidad de gestionar roles y permisos para los administradores, proporcionando una funcionalidad más completa y adaptada a las necesidades de la gestión de usuarios.
 
 ## 5. Objetivos
 
 ### 5.1 General
 
-Desarrollar una API eficiente para la gestión de usuarios, utilizando tecnologías contemporáneas para la administración de cuentas de usuario y seguridad en la gestión de claves.
+El objetivo general de este proyecto es desarrollar una API eficiente para la gestión de usuarios, utilizando estas tecnologías contemporáneas brindando una solución completa para la administración de cuentas de usuario y a la vez seguridad en la gestión de claves.
 
 ### 5.2 Específicos
 
-- Utilizar Redis para el almacenamiento eficiente de datos de usuario.
-- Integrar Amazon KMS para una gestión segura de claves.
-- Simplificar tareas administrativas mediante procesos automatizados.
+- Utilizar Redis como base de datos no relacional para el  almacenamiento eficiente de datos de usuario.
+- Integrar Amazon KMS para una gestión segura de claves, garantizando la seguridad de la información.
+- Simplificar las tareas administrativas mediante procesos automatizados. 
 
-## 6. Desarrollo de la Propuesta
+## 7. Desarrollo de la Propuesta
 
-### 6.1 Caso de Uso API
+### 7.1 Caso de Uso API
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/ef08a15f-0af9-405a-99db-083d18192717)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/33a5955c-d04b-43bc-bc6e-d1806e02aee0)
+
+### 7.2 Diagrama de Clases
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/d2e5da53-a921-49d1-8380-4d09f36b0744)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/11bf6501-437c-4901-9803-8bfdcbf47732)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/d25c42ed-5158-4569-b031-a99e5ebd41d5)
+
+### 7.3 Diagrama de Arquitectura
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/f5072a57-ee6b-49ed-86e4-4b4d97eae730)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/243e7c66-e1f0-444e-bfed-463fe9f369e5)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/b8e185bd-8732-4d66-8dfd-61e436426268)
+
+### 7.4 Diagrama de Componentes
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/d45fd962-2f9b-41ad-b989-a3ef7680905a)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/425de965-37fe-4d0c-a6a6-e29ab72d4947)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/775c6fac-76e3-4e87-80c1-d09eeb45ab00)
+
+### 7.5 Diagrama de Base de Datos
+
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/55ff80dc-d0f7-4184-b582-13e9bd48d7b9)
+![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/1fe87c6c-bd4b-4e43-bcd9-bd2530c4243f)
+
+## 8. Concluciones
+
+En conclusión, la integración de Flask, Redis y MySQL en la creación de una API para la gestión de usuarios ofrece una solución equilibrada y eficiente. 
+Flask proporciona agilidad en el desarrollo, Redis garantiza un almacenamiento rápido y versátil para datos no relacionales, y MySQL aporta estructura para datos relacionales. 
+La inclusión de Amazon KMS refuerza la seguridad en la gestión de claves. En conjunto, estas tecnologías forman una API completa y moderna que cumple con los requisitos de rendimiento, seguridad y eficiencia en la gestión de usuarios.	
 
 
-### 6.2 Diagrama de Clases
+## 9. Bibliografía
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/1b2413f8-fa94-4a06-9ccf-680cfce45115)
-
-
-### 6.3 Diagrama de Arquitectura
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/cfa59f3c-0f09-475d-bea5-f2997cb6bff5)
-
-
-### 6.4 Diagrama de Componentes
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/a9eab504-6570-4750-bc98-6691589fa621)
-
-
-### 6.5 Diagrama de Base de Datos
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/aad2b9e2-d024-43cd-92ae-7c8c10cf7a88)
-
-
-## 7. Bibliografía
-
-- [ORM Explicación](https://codigofacilito.com/articulos/orm-explicacion)
-- [Documentación de Redis en Python](https://redis.io/docs/connect/clients/python/)
-- [Redis-py Documentation](https://redis-py.readthedocs.io/en/stable/)
-
-## 8. Anexos
-
-### 8.1 Diccionario de Datos de la Base de Datos Relacional
-
-**Tabla: User**
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/e901a3d9-bee2-4686-b33e-13f0b502c86a)
-
+https://codigofacilito.com/articulos/orm-explicacion 
+https://redis.io/docs/connect/clients/python/
+https://redis-py.readthedocs.io/en/stable/		
+https://github.com/features/actions
+https://dev.to/msnmongare/title-building-a-food-api-with-django-and-mysql-5b12
+https://docs.docker.com/engine/api/
+https://docs.aws.amazon.com/es_es/prescriptive-guidance/latest/patterns/run-an-asp-net-core-web-api-docker-container-on-an-amazon-ec2-linux-instance.html	
