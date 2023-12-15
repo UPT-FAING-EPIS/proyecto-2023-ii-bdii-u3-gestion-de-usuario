@@ -1,100 +1,180 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/UWDcn9m9)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12950186&assignment_repo_type=AssignmentRepo)
+UNIVERSIDAD PRIVADA DE TACNA
+
+FACULTAD DE INGENIERÍA
+
+Escuela Profesional de Ingeniería de Sistemas
 
 
-# Desarrollo de un Sistema de Gestión de Usuario con Redis y Flask
+Informe Final 
 
-Este repositorio contiene el código fuente y la documentación del proyecto "Desarrollo de un Sistema de Gestión de Usuario en el dominio Configuración usando Base de Datos no relacional Redis en el lenguaje PYTHON", desarrollado como parte del curso de Base de Datos II en la Universidad Privada de Tacna.
+ Desarrollo de un Sistema de Gestión de Usuario en el dominio Configuración
 
-## Resumen
-
-El proyecto se centra en la creación de un sistema de gestión de usuarios utilizando el framework Flask y un API desarrollado en Python. Este sistema permite a un administrador crear roles y permisos, así como gestionar la creación y actualización de usuarios. Los permisos desempeñan un papel crucial en la asignación de capacidades a los usuarios, proporcionando un control eficiente y seguro sobre los recursos y funcionalidades del sistema mediante el uso de la base de datos no relacional Redis.
-
-## Abstract
-
-This project presents the development of a user management system using the Flask framework and our API created in the Python language. An administrator can create roles and permissions to proceed to create users. Both the created user and the admin will be able to use the profile update feature and view the list of users. These permissions play a fundamental role in assigning the capabilities that users will be able to carry out in the system, providing efficient and secure control over the resources and functionality of the system.
-
-## 1. Introducción
-
-El objetivo principal de este proyecto es desarrollar una API eficiente para la gestión de usuarios, aprovechando tecnologías contemporáneas como bases de datos no relacionales, específicamente Redis, y el servicio Amazon Key Management Services (KMS). La implementación se realiza mediante el framework Flask en conjunto con el lenguaje de programación Python.
-
-La API permitirá a los administradores definir roles y permisos, simplificando la administración de cuentas de usuario. La combinación de Redis para el almacenamiento de datos no relacionales y Amazon KMS para la gestión segura de claves contribuirá a la robustez y seguridad del sistema.
-
-## 2. Título
-
-"Desarrollo de un Sistema de Gestión de Usuario en el dominio Configuración usando Base de Datos no relacional Redis en el lenguaje PYTHON"
-
-## 3. Autores
-
-- Chambe Torres, Edgard Reynaldo
-- Nina Vargas, Luigui Augusto
-- Condori Vargas, Tomas Yoel
-- Sebastian Arce Bracamonte
-
-## 4. Planteamiento del Problema
-
-### 4.1 Problema
-
-La falta de una solución integral puede llevar a la ineficiencia en la administración de cuentas de usuario y a la falta de control sobre los recursos y funcionalidades del sistema.
-
-### 4.2 Justificación
-
-La justificación radica en la necesidad de contar con una API robusta y moderna para la gestión de usuarios combinando Flask, Python, Redis y Amazon KMS, ofreciendo una solución integral que aborda eficiencia en el manejo de datos y seguridad en la gestión de claves.
-
-### 4.3 Alcance
-
-El proyecto se limita al desarrollo de una API para la gestión de usuarios utilizando Flask y Python, con gestión segura de claves mediante Amazon KMS.
-
-## 5. Objetivos
-
-### 5.1 General
-
-Desarrollar una API eficiente para la gestión de usuarios, utilizando tecnologías contemporáneas para la administración de cuentas de usuario y seguridad en la gestión de claves.
-
-### 5.2 Específicos
-
-- Utilizar Redis para el almacenamiento eficiente de datos de usuario.
-- Integrar Amazon KMS para una gestión segura de claves.
-- Simplificar tareas administrativas mediante procesos automatizados.
-
-## 6. Desarrollo de la Propuesta
-
-### 6.1 Caso de Uso API
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/ef08a15f-0af9-405a-99db-083d18192717)
+Curso: Base de Datos II
 
 
-### 6.2 Diagrama de Clases
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/1b2413f8-fa94-4a06-9ccf-680cfce45115)
+Docente: Ing. Patrick Jose Cuadros Quiroga 
 
 
-### 6.3 Diagrama de Arquitectura
+Integrantes:
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/cfa59f3c-0f09-475d-bea5-f2997cb6bff5)
-
-
-### 6.4 Diagrama de Componentes
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/a9eab504-6570-4750-bc98-6691589fa621)
-
-
-### 6.5 Diagrama de Base de Datos
-
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/aad2b9e2-d024-43cd-92ae-7c8c10cf7a88)
+Chambe Torres, Edgard Reynaldo 		2019064917
+Nina Vargas, Luigui Augusto			2019065166
+Arce Bracamonte, Sebastián			2019062986
+Condori Vargas, Tomas Yoel			2018000487
+Casilla Maquera, Tell Ivan				2017057888
 
 
-## 7. Bibliografía
 
-- [ORM Explicación](https://codigofacilito.com/articulos/orm-explicacion)
-- [Documentación de Redis en Python](https://redis.io/docs/connect/clients/python/)
-- [Redis-py Documentation](https://redis-py.readthedocs.io/en/stable/)
+Tacna – Perú
+2023
 
-## 8. Anexos
 
-### 8.1 Diccionario de Datos de la Base de Datos Relacional
+ÍNDICE GENERAL
 
-**Tabla: User**
 
-![image](https://github.com/UPT-FAING-EPIS/proyecto-2023-ii-bdii-u3-gestion-de-usuario/assets/102675967/e901a3d9-bee2-4686-b33e-13f0b502c86a)
+1. Resumen	3
+2. Abstract	3
+3. Introducción	3
+4. Planteamiento del Problema	4
+5. Objetivos	5
+6. Marco Teórico	5
+7. Desarrollo de la Solución	6
+8. Conclusiones	13
+9. Bibliografía	13
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Resumen
+Este proyecto se propone desarrollar una API eficiente para la gestión de usuarios, haciendo uso de tecnologías contemporáneas como Redis y MySQL para almacenar datos no relacionales y relacionales, respectivamente. La implementación se lleva a cabo con Flask y Python, integrando Amazon Key Management Services (KMS) para asegurar una gestión segura de claves. La API permitirá a los administradores definir roles y permisos, simplificando la administración de cuentas de usuario y optimizando la eficiencia del sistema. Se aborda la falta de una solución integral para la gestión de usuarios, y se busca ofrecer una solución completa y moderna que garantice robustez y seguridad.
+Abstract
+
+This project aims to develop an efficient API for user management, making use of contemporary technologies such as Redis and MySQL to store non-relational and relational data, respectively. The implementation is carried out with Flask and Python, integrating Amazon Key Management Services (KMS) to ensure secure key management. The API will allow administrators to define roles and permissions, simplifying user account management and optimizing system efficiency. The lack of a comprehensive solution for user management is addressed, and the aim is to offer a complete and modern solution that guarantees robustness and security.
+Introducción
+Este proyecto tiene como objetivo principal desarrollar una API eficiente para la gestión de usuarios, utilizando tecnologías contemporáneas como bases de datos no relacionales, en este caso, Redis, y bases de datos relacionales, específicamente MySQL, junto con el servicio de gestión de claves Amazon Key Management Services (KMS). La implementación se lleva a cabo mediante el framework Flask en conjunto con el lenguaje de programación Python.
+En este contexto, la API permitirá a los administradores definir roles y permisos, simplificando la administración de cuentas de usuario. La combinación de Redis para el almacenamiento de datos no relacionales, MySQL para la gestión de datos relacionales y Amazon KMS para la gestión segura de claves contribuirá a la robustez y seguridad del sistema. Los principios de Flask facilitarán el desarrollo ágil y la creación de endpoints eficientes.
+Este proyecto busca ofrecer una solución completa y moderna para la gestión de usuarios a través de una API, aprovechando la sinergia entre Redis, MySQL, Amazon KMS, Flask y Python en el proceso.		
+Planteamiento del Problema						
+Problema
+
+El problema abordado en este proyecto es la falta de una solución integral puede llevar a la ineficiencia en la administración de cuentas de usuario y a la falta de control sobre los recursos y funcionalidades del sistema.
+
+
+Justificación
+
+Este proyecto surge de la necesidad de desarrollar una API robusta para la gestión de usuarios. Se utiliza el framework Flask con Python, combinando bases de datos no relacionales como Redis y bases de datos relacionales como MySQL. Además, se implementa Amazon Key Management Services (KMS) para asegurar una gestión segura de claves. La integración de estas tecnologías busca ofrecer una solución completa y moderna que optimice la eficiencia en el manejo de datos y garantice la seguridad en la gestión de claves, abordando así los requisitos esenciales del proyecto.
+
+
+Alcance
+
+El alcance de este proyecto se extiende al desarrollo de una API integral para la gestión de usuarios mediante el uso de Flask y Python. Se incluirá la implementación segura de claves a través de Amazon KMS. El sistema final, respaldado por esta API, posibilitará a los usuarios, ya sean administradores o usuarios regulares, acceder a perfiles y visualizar listas de usuarios. Además, se contemplará la capacidad de gestionar roles y permisos para los administradores, proporcionando una funcionalidad más completa y adaptada a las necesidades de la gestión de usuarios.
+
+
+Objetivos	
+General
+El objetivo general de este proyecto es desarrollar una API eficiente para la gestión de usuarios, utilizando estas tecnologías contemporáneas brindando una solución completa para la administración de cuentas de usuario y a la vez seguridad en la gestión de claves.
+Específico
+-  Utilizar Redis como base de datos no relacional para el  almacenamiento eficiente de datos de usuario.
+- Integrar Amazon KMS para una gestión segura de claves, garantizando la seguridad de la información.
+- Simplificar las tareas administrativas mediante procesos automatizados. 							
+Marco Teórico	
+Flask Framework
+Flask es un microframework web escrito en Python, reconocido por su enfoque minimalista y modularidad. Su sistema de enrutamiento simple permite asociar funciones con URLs específicas, facilitando la creación de endpoints personalizados. Utiliza el motor de plantillas Jinja2 para generar HTML dinámico, lo que simplifica la creación de vistas interactivas. Flask es altamente extensible, permitiendo la incorporación de extensiones para agregar funcionalidades específicas como autenticación y manejo de bases de datos. Su filosofía de desarrollo ágil facilita la creación rápida de prototipos y la iteración eficiente durante el desarrollo de aplicaciones web.
+Redis
+Redis es una base de datos en memoria que opera como un almacén de estructuras de datos clave-valor. Almacenando todos los datos en memoria, ofrece un acceso rápido y eficiente a la información. Admite diversas estructuras de datos como strings, hashes y listas, lo que facilita la implementación de diversas funcionalidades. Aunque es en memoria, Redis ofrece opciones de persistencia opcional para garantizar la durabilidad de los datos. Con operaciones atómicas, asegura la consistencia de los datos, y su alta escalabilidad lo hace apto tanto como base de datos principal como para almacenamiento en caché.
+MySQL
+MySQL es un sistema de gestión de bases de datos relacionales ampliamente utilizado. Siguiendo el modelo relacional, organiza datos en tablas relacionadas, lo que facilita la representación y manipulación de datos estructurados. Utiliza el lenguaje SQL para realizar operaciones como consultas, inserciones y actualizaciones en la base de datos. Ofrece mecanismos para garantizar la integridad referencial entre tablas, asegurando la consistencia de los datos. Adhiriéndose a los principios ACID, garantiza la fiabilidad de las transacciones. MySQL es escalable y eficiente en el manejo de grandes conjuntos de datos, proporcionando rendimiento robusto en aplicaciones con necesidades de almacenamiento de datos importantes.
+Desarrollo de la Solución	
+Casos de Uso API
+		
+
+
+
+
+
+
+
+Diagrama de Clases
+Unidad 1
+
+
+Unidad2 - Redis
+
+
+
+
+
+Unidad 3:
+
+
+
+
+
+
+
+Diagrama de Arquitectura
+Unidad 1 - MySQL
+
+Unidad 2 -Redis No relacional
+
+
+
+
+
+Unidad 3 - Integración :
+
+
+
+Diagrama de Componentes
+Unidad 1 - MySQL Relacional
+
+Unidad 2 -Redis No relacional
+
+Unidad 3 - Integración 
+
+
+
+Diagrama de base de datos
+MySQL
+
+Redis		
+
+
+
+
+
+
+
+
+
+
+
+
+
+Conclusiones	
+En conclusión, la integración de Flask, Redis y MySQL en la creación de una API para la gestión de usuarios ofrece una solución equilibrada y eficiente. 
+Flask proporciona agilidad en el desarrollo, Redis garantiza un almacenamiento rápido y versátil para datos no relacionales, y MySQL aporta estructura para datos relacionales. 
+La inclusión de Amazon KMS refuerza la seguridad en la gestión de claves. En conjunto, estas tecnologías forman una API completa y moderna que cumple con los requisitos de rendimiento, seguridad y eficiencia en la gestión de usuarios.										
+Bibliografía		
+
+https://codigofacilito.com/articulos/orm-explicacion 
+https://redis.io/docs/connect/clients/python/
+https://redis-py.readthedocs.io/en/stable/		
+https://github.com/features/actions
+https://dev.to/msnmongare/title-building-a-food-api-with-django-and-mysql-5b12
+https://docs.docker.com/engine/api/
+https://docs.aws.amazon.com/es_es/prescriptive-guidance/latest/patterns/run-an-asp-net-core-web-api-docker-container-on-an-amazon-ec2-linux-instance.html	
